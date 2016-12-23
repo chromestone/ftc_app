@@ -4,8 +4,12 @@
 
 -------->********DEREK ZHANG WAZZZ HEREE********<--------
 
-if (i == 1 && weight != ONE_TON){ //Dank memes right here for programmers
+//Dank memes right here for programmers
+
+if (i == 1 && weight != ONE_TON){
+
     System.out.println("Must be da D.Z. guy!");
+
 }
 
 ALRIGHT BOIIII WHO EVER BE LOOKING AT THIS:
