@@ -7,7 +7,6 @@
 if (i == 1 && weight != ONE_TON){ //Dank memes right here for programmers
 
     System.out.println("Must be da D.Z. guy!");
-
 }
 
 ALRIGHT BOIIII WHO EVER BE LOOKING AT THIS:
