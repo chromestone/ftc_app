@@ -5,6 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 /**
+ * This tests the joystick (direction) of the gamepad
+ *
+ * left should be negative x
+ * up should be negative y
+ *
  * Created by derekzhang on 12/9/16.
  */
 
@@ -19,8 +24,8 @@ public class GamepadTest extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            telemetry.addData("gamepad1", "" + gamepad1);
-            telemetry.addData("gamepad2", "" + gamepad2);
+            telemetry.addData("1 left y", "" + gamepad1.left_stick_x);
+            telemetry.addData("1 left x", "" + gamepad1.left_stick_y);
 
             telemetry.update();
 

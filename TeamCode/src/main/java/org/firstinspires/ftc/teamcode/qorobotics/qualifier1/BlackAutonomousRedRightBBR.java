@@ -1,18 +1,24 @@
-package org.firstinspires.ftc.teamcode.qorobotics;
+package org.firstinspires.ftc.teamcode.qorobotics.qualifier1;
 
 import android.graphics.Color;
 
 import com.qualcomm.robotcore.eventloop.opmode.*;
 import com.qualcomm.robotcore.hardware.*;
 
+import org.firstinspires.ftc.teamcode.qorobotics.ColorState;
+
 /**
+ * QUALIFIER 1 (very not refined)
+ *
  * ******DEREK READ THIS: INVERSE OF BLUUUEEEEE LEEEEEFFFFFTTT******
  * Ball Beacon Ramp (BBR)
+ *
  * Created by Derek Zhang on 12/9/16.
  */
 
 @Autonomous(name = "Auto Blue Left BBR", group = "Black")
 //@Autonomous(name = "Auto Red Right BBR", group = "Black")
+@Disabled
 public class BlackAutonomousRedRightBBR extends LinearOpMode {
 
     private static final double MAX_LEFT_SPEED = 0.95;

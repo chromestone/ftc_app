@@ -5,6 +5,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
+ * QUALIFIER 1
+ *
+ * don't worry, this works :)
+ *
  * Created by Derek Zhang on 10/4/16.
  */
 
@@ -125,7 +129,7 @@ public class RedTankDrive extends LinearOpMode {
 
             ////////////////////////////////
 
-            idle();
+            //idle();
         }
 
         ////////////////////////////////

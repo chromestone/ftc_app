@@ -5,6 +5,7 @@ import android.graphics.Color;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -13,15 +14,18 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import org.firstinspires.ftc.teamcode.qorobotics.ColorState;
 
 /**
- * Created by derekzhang on 12/1/16.
+ * Tests color sensor + servo sweep with increments
+ * (looking for blue side of beacon)
+ *
+ * Created by Derek Zhang on 12/1/16.
  */
 
-@Autonomous(name = "Color Sensor Test", group = "Test")
+@TeleOp(name = "Color Sensor Test", group = "Test")
 @Disabled
 public class ColorSensorTest extends LinearOpMode {
 
-    private static final double MAX_LEFT_SPEED = 1.0;
-    private static final double MAX_RIGHT_SPEED = 1.0;
+    //private static final double MAX_LEFT_SPEED = 1.0;
+    //private static final double MAX_RIGHT_SPEED = 1.0;
 
     ////////////////////////////////
 
@@ -49,6 +53,8 @@ public class ColorSensorTest extends LinearOpMode {
         backLeftMotor.resetDeviceConfigurationForOpMode();
         backRightMotor.resetDeviceConfigurationForOpMode();
 
+        crServo.resetDeviceConfigurationForOpMode();
+
         colorSensor.resetDeviceConfigurationForOpMode();
 
         ////////////////////////////////
@@ -56,43 +62,52 @@ public class ColorSensorTest extends LinearOpMode {
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
-
         ////////////////////////////////
 
         waitForStart();
 
         ////////////////////////////////
 
-        float hsvValues[] = {0F,0F,0F};
         ColorState state = ColorState.NA;
 
-        double runtime = 2.0;
+        float hsvValues[] = {0F,0F,0F};
+        float hue;
 
-        crServo.setPower(0.01);
+        //for 45 degrees
+        double runtime = 0.125 / (52.0 / 60.0);//rotate 45 degrees which is an eight of a revolution + given servo is @ 52 RPM
 
-        resetStartTime();
-        while (opModeIsActive() && (getRuntime() < runtime)) {
+        crServo.setPower(1.0);//.01
+
+        wait(runtime);
+
+        crServo.setPower(0.0);
+
+        Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
+
+        hue = hsvValues[0];
+
+        //red
+        if ((hue >= 0 && hue <= 25) || hue >= 335) {//hue >= 215F && hue <= 265F) {
+
+            state = ColorState.RIGHT;
+        }
+        else {
+
+            crServo.setPower(1.0);
+
+            wait(runtime * 2.0);
+
+            crServo.setPower(0.0);
 
             Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
 
-            float hue = hsvValues[0];
+            hue = hsvValues[0];
 
-            //blue
-            if (hue >= 215F && hue <= 265F) {
+            //assume 0 <= hue <= 360
+            if (hue <= 25 || hue >= 335) {
 
-                if (getRuntime() >= runtime / 2.0) {
-
-                    state = ColorState.RIGHT;
-                }
-                else {
-
-                    state = ColorState.LEFT;
-                }
-
-                break;
+                state = ColorState.LEFT;
             }
-
-            idle();
         }
 
         ////////////////////////////////

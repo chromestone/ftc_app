@@ -1,27 +1,5 @@
 ## TeamCode Module
 
-
-
--------->********DEREK ZHANG WAZZZ HEREE********<--------
-
-//Dank memes right here for programmers
-
-if (i == 1 && weight != ONE_TON){
-
-    System.out.println("Must be da D.Z. guy!");
-
-}
-
-ALRIGHT BOIIII WHO EVER BE LOOKING AT THIS:
-
-STUFF BELOW USEFUL FOR FTC.
-
-BUT HEAR ME OUT FIRST
-
-IN THE EVENT OF team >= 2, DO NOT PUT BOTH TEAM CODES INTO THE SAME PROJECT!!!
-
-I uploaded it like this for conveniance. You should put code for different teams in different projects. (copy this twice and then name one black team and one red team. Then put the respective code into this "TeamCode Module")
-
 Welcome!
 
 This module, TeamCode, is the place where you will write/paste the code for your team's

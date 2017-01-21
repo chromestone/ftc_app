@@ -7,10 +7,12 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.qorobotics.util.Ticker;
 
 /**
+ * Tests servo
+ *
  * Created by Derek Zhang on 11/10/16.
  */
 
-@Autonomous(name = "ServoTest", group = "Test")
+@TeleOp(name = "ServoTest", group = "Test")
 @Disabled
 public class ServoTester extends LinearOpMode {
 
@@ -20,14 +22,22 @@ public class ServoTester extends LinearOpMode {
         Servo servo = hardwareMap.servo.get("servo");
         //CRServo crservo = hardwareMap.crservo.get("crservo");//continuous servo
 
+        ////////////////////////////////
+
         double increment = 0.01;
         double position = 0;
 
+        ////////////////////////////////
+
         waitForStart();
+
+        ////////////////////////////////
 
         servo.setPosition(0.0);
 
         Ticker ticker = new Ticker();
+
+        ////////////////////////////////
 
         while (opModeIsActive()) {
 
@@ -44,7 +54,11 @@ public class ServoTester extends LinearOpMode {
 
             servo.setPosition(position);
 
+            ////////////////////////////////
+
             ticker.waitForTick(40L);
+
+            ////////////////////////////////
 
             idle();
         }

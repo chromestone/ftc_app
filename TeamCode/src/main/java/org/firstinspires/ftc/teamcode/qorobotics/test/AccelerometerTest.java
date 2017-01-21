@@ -8,19 +8,19 @@ import com.qualcomm.robotcore.eventloop.opmode.*;
 import org.firstinspires.ftc.teamcode.qorobotics.util.Ticker;
 
 /**
- * Displays the accelerations of robot controller on the driver station
+ * Displays the accelerations of robot controller (phone) on the driver station
  *
  * Created by Derek Zhang on 11/12/16.
  */
-@Autonomous(name = "Accel Test", group = "Test")
+@TeleOp(name = "Accel Test", group = "Test")
 @Disabled
 public class AccelerometerTest extends LinearOpMode implements SensorEventListener {
 
-    private final Object lock = new Object();
+    //private final Object lock = new Object();
 
     //private long lastUpdate = 0L;
 
-    private float[] accelerations = null;
+    private final float[] accelerations = new float[]{-1F, -1F, -1F};
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -28,7 +28,9 @@ public class AccelerometerTest extends LinearOpMode implements SensorEventListen
         //lastUpdate = System.currentTimeMillis();
 
         //initialization is good habit
-        accelerations = new float[]{-1F, -1F, -1F};
+        accelerations[0] = -1F;
+        accelerations[1] = -1F;
+        accelerations[2] = -1F;
 
 
         Context context = hardwareMap.appContext;
@@ -43,7 +45,8 @@ public class AccelerometerTest extends LinearOpMode implements SensorEventListen
 
         while (opModeIsActive()) {
 
-            synchronized (lock) {
+            //synchronized (lock) {
+            synchronized (accelerations) {
 
                 telemetry.addData("X", accelerations[0]);
                 telemetry.addData("Y", accelerations[1]);
@@ -64,7 +67,9 @@ public class AccelerometerTest extends LinearOpMode implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        /*Sensor sensor = event.sensor;
+        /*
+
+        Sensor sensor = event.sensor;
 
         if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
@@ -73,16 +78,19 @@ public class AccelerometerTest extends LinearOpMode implements SensorEventListen
             if ((curTime - lastUpdate) > 10) {
 
                 //long diffTime = (curTime - lastUpdate);
-                lastUpdate = curTime;*/
+                lastUpdate = curTime;
+
+                */
 
                 //accelerations = event.values;
 
-                synchronized (lock) {
+                //synchronized (lock) {
+                synchronized (accelerations) {
 
-                    System.arraycopy(event.values, 0, accelerations, 0, 3);
+                        System.arraycopy(event.values, 0, accelerations, 0, 3);
                 }
-            /*}
-        }*/
+            //}
+        //}
     }
 
     /*

@@ -1,16 +1,24 @@
-package org.firstinspires.ftc.teamcode.qorobotics;
+package org.firstinspires.ftc.teamcode.qorobotics.qualifier1;
+
+import android.graphics.Color;
 
 import com.qualcomm.robotcore.eventloop.opmode.*;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
+ * QUALIFIER 1 (very not refined)
+ *
+ * One of the autonomous programs for the red team.
+ * The path to beacons are different for each of the
+ * four possible position in the FTC competition
  * Ball Ramp (BR)
- * Created by Derek Zhang on 12/9/16.
+ *
+ * Created by Derek Zhang on 10/31/16.
  */
-
-@Autonomous(name = "Auto Red Right BR", group = "Red")
-public class RedAutonomousRedRightBR extends LinearOpMode {
+@Autonomous(name = "Auto Blue Left BR", group = "Red")
+@Disabled
+public class RedAutonomousBlueLeftBR extends LinearOpMode {
 
     private static final double MAX_LEFT_SPEED = 1.0;
     private static final double MAX_RIGHT_SPEED = 1.0;
@@ -58,8 +66,8 @@ public class RedAutonomousRedRightBR extends LinearOpMode {
         //give robot time to stop
         runMotor(0.0, 0.0, 0.2);
 
-        //turn 45 degrees left
-        runMotor(-MAX_LEFT_SPEED / 2.0, MAX_RIGHT_SPEED / 2.0, TURN_45_TIME);//0.7);//0.35);
+        //turn 45 degrees right
+        runMotor(MAX_LEFT_SPEED / 2.0, -MAX_RIGHT_SPEED / 2.0, TURN_45_TIME);//0.7);//0.35);
 
         runMotor(0.0, 0.0, 0.2);
 
@@ -69,8 +77,8 @@ public class RedAutonomousRedRightBR extends LinearOpMode {
 
         runMotor(0.0, 0.0, 0.2);
 
-        //turn 90 degrees left + additional 20 degrees
-        runMotor(-MAX_LEFT_SPEED / 2.0, MAX_RIGHT_SPEED / 2.0, TURN_45_TIME * (110.0 / 45.0));
+        //turn 90 degrees right + additional 20 degrees (110)
+        runMotor(MAX_LEFT_SPEED / 2.0, -MAX_RIGHT_SPEED / 2.0, TURN_45_TIME * (110.0 / 45.0));
 
         runMotor(0.0, 0.0, 0.2);
 
