@@ -1,4 +1,7 @@
 # ftc_app
+
+_Quince Orchard Robotics 2016-2017_
+
 FTC Android Studio project to create FTC Robot Controller app.
 
 This is the FTC SDK that can be used to create an FTC Robot Controller app, with custom op modes.
